@@ -1,0 +1,14 @@
+kind: Asset
+spec:
+  id: imei-000
+  displayName: "FXTX test device 0"
+  description: "This is a test asset."
+  active: true
+  assetClass: tracker
+  routes:
+    - accountId: xorg
+      modelId: tracked_device_fxtx
+      type: system
+      conditions:
+        - parser: qlrx_idx_regex
+          condition: "0|\\+RESP:FXTX"
