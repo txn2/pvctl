@@ -2,6 +2,9 @@
 
 WIP: provision cli
 
+### Install
+
+`brew install txn2/tap/pvctl`
 
 ## Development
 
