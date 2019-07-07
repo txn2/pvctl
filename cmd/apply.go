@@ -32,7 +32,7 @@ var (
 Apply Provision Account, User and Asset objects from YAML configuration files.`,
 		Run: func(cmd *cobra.Command, args []string) {
 
-			pvOs := util.NewPvObjectStore(backend)
+			pvOs := util.NewPvObjectStore(provisionBackend)
 
 			for _, pth := range applyPaths {
 				err := pvOs.LoadObjectsFromPath(pth)

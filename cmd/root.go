@@ -26,17 +26,17 @@ import (
 )
 
 var (
-	version = "v0.0.0"
+	Version = "0.0.0"
 	header  = `                _   _
  _ ____   _____| |_| |
 | '_ \ \ / / __| __| |
 | |_) \ V / (__| |_| |
 | .__/ \_/ \___|\__|_|
-|_| ` + version + `
+|_| v` + Version + `
 `
 
-	cfgFile string
-	backend string
+	cfgFile          string
+	provisionBackend string
 
 	rootCmd = &cobra.Command{
 		Use:   "pvctl [command]",
@@ -68,10 +68,10 @@ func init() {
 
 	// global application flags
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.pvctl.yaml)")
-	rootCmd.PersistentFlags().StringVar(&backend, "backend", "http://api-provision:8070", "location of the Provision service")
+	rootCmd.PersistentFlags().StringVar(&provisionBackend, "provisionBackend", "http://api-provision:8070", "location of the Provision service")
 
 	// config binding
-	err := viper.BindPFlag("backend", rootCmd.PersistentFlags().Lookup("backend"))
+	err := viper.BindPFlag("provisionBackend", rootCmd.PersistentFlags().Lookup("provisionBackend"))
 	if err != nil {
 		log.Fatalf("could not bind to configuration: %s", err.Error())
 		os.Exit(1)
